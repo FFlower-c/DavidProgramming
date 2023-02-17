@@ -16,6 +16,8 @@ public class EnemyParents : MonoBehaviour
     private bool movingTowardsLeft = true;
     public float waitingTIme;
 
+    public int chaseSpeed;
+    public Transform FindPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -25,9 +27,9 @@ public class EnemyParents : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+   public void Update()
     {
-        
+        Cathchplayer();
     }
 
     public virtual void KillEnemy()
@@ -73,6 +75,32 @@ public class EnemyParents : MonoBehaviour
                 }
                 WaitTime = waitingTIme;
             }
+        }
+    }
+    void Cathchplayer()
+    {
+        if (FindPlayer)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, FindPlayer.position, chaseSpeed * Time.deltaTime);
+        }
+        if (FindPlayer == null )
+        {
+            Move();
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            FindPlayer = collision.transform;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            FindPlayer = null;
         }
     }
 }

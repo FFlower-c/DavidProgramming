@@ -14,8 +14,9 @@ public class Enemy1 : EnemyParents
     }
 
     // Update is called once per frame
-    public void Update()
+    new public void Update()
     {
+        base.Update();
         KillEnemy();
         Move();
         
