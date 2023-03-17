@@ -9,3 +9,6 @@ More things will come later
 
 update March 10,2023
 added chest
+
+update March 17,2023
+added a main Menu,and use C# property and coroutine to control it
