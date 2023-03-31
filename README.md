@@ -12,3 +12,6 @@ added chest
 
 update March 17,2023
 added a main Menu,and use C# property and coroutine to control it
+
+update March 30,2023
+add a load and save system,and XOR
